@@ -1,0 +1,76 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFrameworks>net40;net461</TargetFrameworks>
+    <AssemblyName>ManagedBass.Crossfade.Tests</AssemblyName>
+    <OutputPath>..\distribution\</OutputPath>
+    <Version>0.0.1</Version>
+    <Platforms>AnyCPU</Platforms>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <Reference Include="ManagedBass" Condition="'$(TargetFramework)' == 'net40'">
+      <HintPath>..\lib\net40\ManagedBass.dll</HintPath>
+    </Reference>
+    <Reference Include="ManagedBass.Mix" Condition="'$(TargetFramework)' == 'net40'">
+      <HintPath>..\lib\net40\ManagedBass.Mix.dll</HintPath>
+    </Reference>
+  </ItemGroup>
+
+  <ItemGroup>
+    <Reference Include="ManagedBass" Condition="'$(TargetFramework)' == 'net461'">
+      <HintPath>..\lib\net461\ManagedBass.dll</HintPath>
+    </Reference>
+    <Reference Include="ManagedBass.Mix" Condition="'$(TargetFramework)' == 'net461'">
+      <HintPath>..\lib\net461\ManagedBass.Mix.dll</HintPath>
+    </Reference>
+  </ItemGroup>
+
+  <ItemGroup>
+	  <Folder Include="Media\" />
+	  <Folder Include="x64\" />
+	  <Folder Include="x86\" />
+	  <Folder Include="Properties\" />
+  </ItemGroup>
+
+	<ItemGroup>
+		<None Include="..\lib\x64\bass.dll" Link="x64\bass.dll">
+			<CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+		</None>
+		<None Include="..\lib\x86\bass.dll" Link="x86\bass.dll">
+			<CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+		</None>
+	</ItemGroup>
+
+	<ItemGroup>
+		<None Include="..\lib\x64\bassmix.dll" Link="x64\bassmix.dll">
+			<CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+		</None>
+		<None Include="..\lib\x86\bassmix.dll" Link="x86\bassmix.dll">
+			<CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+		</None>
+	</ItemGroup>
+
+  <ItemGroup>
+    <None Include="..\Media\01 Botanical Dimensions.m4a" Link="Media\01 Botanical Dimensions.m4a">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="..\Media\02 Outer Shpongolia.m4a" Link="Media\02 Outer Shpongolia.m4a">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+  </ItemGroup>
+
+  <ItemGroup>
+	  <PackageReference Include="ManagedBass.Crossfade" Version="0.1.0" />
+	  <PackageReference Include="NUnit" Version="3.9.0" />
+	  <PackageReference Include="NUnit3TestAdapter" Version="3.16.1">
+		  <PrivateAssets>all</PrivateAssets>
+		  <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
+	  </PackageReference>
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\BassCrossfade\ManagedBass.Crossfade.csproj" />
+  </ItemGroup>
+
+</Project>
